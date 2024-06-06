@@ -90,6 +90,9 @@ class ChatGPT:
 
                     answer = ""
                     async for r_item in r_gen:
+                        if len(r_item.choices) < 1:
+                            break
+                        
                         delta = r_item.choices[0].delta
 
                         if "content" in delta:
